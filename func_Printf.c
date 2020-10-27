@@ -8,13 +8,13 @@
 void parametros(void)
 {
 	conver_t f_list[] = {
-	{"c", print_char},
-	{"s", print_string},
-	{"%", print_percent},
-	{"d", print_integer},
-	{"i", print_integer},
-	{"b", print_binary},
-	{"r", print_reversed},
+	{"c", _char},
+	{"s", _string},
+	{"%", _percent},
+	{"d", _integer},
+	{"i", _integer},
+	{"b", _binary},
+	{"r", _reversed},
 	{"R", rot13},
 		{"u", unsigned_integer},
 		{"o", print_octal},
