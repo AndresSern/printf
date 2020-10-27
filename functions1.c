@@ -1,21 +1,21 @@
 #include "holberton.h"
 /**
- * prtChar - print characters
+ * print_char - print characters
  * @list: arguments
  * Return: how many characters has been printed
  */
-int prtChar(va_list list)
+int _char(va_list list)
 {
-	put_char(va_arg(list, int));
+	_putchar(va_arg(list, int));
 	return (1);
 }
 
 /**
- * print_string - Print a string
+ * _string - Print a string
  * @list: arguments
  * Return: how many characters has been printed
  */
-int print_string(va_list list)
+int _string(va_list list)
 {
 	int a;
 	char *string;
@@ -24,12 +24,27 @@ int print_string(va_list list)
 	if (string == NULL)
 		string = "(null)";
 	for (a = 0; string[a] != '\0'; i++)
-		put_char(string[a]);
+		_putchar(string[a]);
 	return (a);
+}
+
+/**
+ * _percent - print %
+ * @list: arguments
+ * Return: specific character
+ */
+int _percent(va_list list)
+{
+	_putchar('%');
+	return (1);
 }
 
 /**
  *
  *
+ *
  */
-int print_percent(va_list list)
+int _integer(va_list list)
+{
+
+}
