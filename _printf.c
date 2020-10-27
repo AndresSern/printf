@@ -2,30 +2,39 @@
 
 
 /**
- * parametros - Parameters for printf
- * @f_list: list of arguments
- *
+ * _printf - Parameters for printf
+ * @format: list of arguments
+ * Return: Printed thing
  */
 
 int _printf(const char *format, ...)
 {
 	int chars;
 	va_list list;
-	
-	va_start (list, format);
+
+	va_start(list, format);
 	if (format == NULL)
 		return (-1);
 
 	chars = charsFormats(format, list);
 
 	va_end(list);
-	return chars;
+	return (chars);
 }
+
+/**
+ * charsFormats - paremters printf
+ * @format: list of arguments
+ * @args: listing
+ * Return: value of print
+ */
+
 int charsFormats(const char *format, va_list args)
 {
 	int a, b, chars, r_val;
 
-	fmtsSpefier f_list[] = {{"c", _char}, {"s", _string}, {"%", _percent}, {NULL, NULL}
+	fmtsSpefier f_list[] = {{"c", _char}, {"s", _string},
+{"%", _percent}, {NULL, NULL}
 	};
 	chars = 0;
 	for (a = 0; format[a] != '\0'; a++)
@@ -50,7 +59,7 @@ int charsFormats(const char *format, va_list args)
 					_putchar(format[a]);
 					_putchar(format[a + 1]);
 					chars = chars + 2;
- 				}
+}
 				else
 					return (-1);
 			}
