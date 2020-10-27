@@ -21,47 +21,46 @@ int _printf(const char *format, ...)
 	va_end(list);
 	return chars;
 }
-int charsFormats(const char *format, va_list valist)
+int charsFormats(const char *format, va_list args)
 {
-	int i = 0, j = 0, printedCharacters = 0;
-	fmtsSpefier dataType[] = {{"c", _char}, {"s",_string}};
+	int a, b, chars, r_val;
 
-	while (format != NULL && format[i] != '\0')
+	fmtsSpefier f_list[] = {{"c", _char}, {"s", _string}, {"%", _percent}, {NULL, NULL}
+	};
+	chars = 0;
+	for (a = 0; format[a] != '\0'; a++)
 	{
-		if (format[i] == '%')
+		if (format[a] == '%')
 		{
-			if (format[i + 1] == '\0')
-				return (-1);
-			if (format[i + 1] == '%')
+			for (b = 0; f_list[b].sym != NULL; b++)
 			{
-				printedCharacters += _putchar ('%');
-				i++;
-			}
-			else if (format[i + 1] == ' ')
-			{
-				while (format[i + 1] == ' ')
-					i++;
-				printedCharacters += _putchar('%');
-				printedCharacters += _putchar(' ');
-			}
-			else
-			{
-				for (j = 0; j < 2; j++)
+				if (format[a + 1] == f_list[b].sym[0])
 				{
-					if (format[i + 1] == dataType[j].sym[0])
-					{
-						printedCharacters += dataType[j].f(valist);
-						i++;
-						break;
-					}
+					r_val = f_list[b].f(args);
+					if (r_val == -1)
+						return (-1);
+					chars += r_val;
+					break;
 				}
-				if (j == 2)
-					printedCharacters += _putchar('%');
 			}
+			if (f_list[b].sym == NULL && format[a + 1] != ' ')
+			{
+				if (format[a + 1] != '\0')
+				{
+					_putchar(format[a]);
+					_putchar(format[a + 1]);
+					chars = chars + 2;
+ 				}
+				else
+					return (-1);
+			}
+		a += 1;
 		}
 		else
-			printedCharacters += _putchar (format[i]);
-		i++;
+		{
+			_putchar(format[a]);
+			chars++;
+		}
 	}
-	return (printedCharacters);
+	return (chars);
 }
