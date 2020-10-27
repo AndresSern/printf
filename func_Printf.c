@@ -4,11 +4,26 @@
  * @f_list: list of arguments
  *
  */
-int parser(const char *format, va_list arg_list)
+
+int _printf(const char *format, ...)
+{
+	int chars;
+	va_list list;
+	
+	va_start (list, format);
+	if (format == NULL)
+		return (-1);
+
+	chars = charsFormats(forma, list);
+
+	va_end(list);
+	return chars;
+}
+int charsFormats(const char *format, va_list args)
 {
 	int a, b, c, chars, r_val;
 
-	conver_t f_list[] = {{"c", _char}, {"s", _string}, {"%", _percent},
+	fmtsSpefier f_list[] = {{"c", _char}, {"s", _string}, {"%", _percent},
 	{NULL, NULL}
 	};
 	for (a = 0; format[a]; a++)
@@ -19,7 +34,7 @@ int parser(const char *format, va_list arg_list)
 			{
 				if (format[a + 1] == f_list[b].sym[0])
 				{
-					r_val = f_list[b].f(arg_list);
+					r_val = f_list[b].f(args);
 					if (r_val == -1)
 						return (-1);
 					chars += r_val;
@@ -40,7 +55,7 @@ int parser(const char *format, va_list arg_list)
 		a += 1;
 		}
 		else
-{
+		{
 			chars(format[a]); /*call the write function*/
 			chars++;
 		}
