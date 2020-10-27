@@ -23,7 +23,7 @@ int _string(va_list list)
 	string = va_arg(list, char *);
 	if (string == NULL)
 		string = "(null)";
-	for (a = 0; string[a] != '\0'; i++)
+	for (a = 0; string[a] != '\0'; a++)
 		_putchar(string[a]);
 	return (a);
 }
@@ -33,18 +33,14 @@ int _string(va_list list)
  * @list: arguments
  * Return: specific character
  */
-int _percent(va_list list)
+int _percent(__attribute__((unused))va_list list)
 {
+	
 	_putchar('%');
 	return (1);
 }
-
 /**
  *
  *
  *
  */
-int _integer(va_list list)
-{
-
-}

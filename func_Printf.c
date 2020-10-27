@@ -14,14 +14,14 @@ int _printf(const char *format, ...)
 	if (format == NULL)
 		return (-1);
 
-	chars = charsFormats(forma, list);
+	chars = charsFormats(format, list);
 
 	va_end(list);
 	return chars;
 }
 int charsFormats(const char *format, va_list args)
 {
-	int a, b, c, chars, r_val;
+	int a, b, chars, r_val;
 
 	fmtsSpefier f_list[] = {{"c", _char}, {"s", _string}, {"%", _percent},
 	{NULL, NULL}
@@ -45,8 +45,8 @@ int charsFormats(const char *format, va_list args)
 			{
 				if (format[a + 1] != '\0')
 				{
-					put_char(format[a]);
-					put_char(format[a + 1]);
+					_putchar(format[a]);
+					_putchar(format[a + 1]);
 					chars += 2;
  				}
 				else
@@ -56,10 +56,9 @@ int charsFormats(const char *format, va_list args)
 		}
 		else
 		{
-			chars(format[a]); /*call the write function*/
+			_putchar(format[a]); /*call the write function*/
 			chars++;
 		}
 	}
 	return (chars);
 }
-
