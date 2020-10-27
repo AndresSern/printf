@@ -1,4 +1,5 @@
 #include "holberton.h"
+
 /**
  * parametros - Parameters for printf
  * @f_list: list of arguments
@@ -22,10 +23,10 @@ int _printf(const char *format, ...)
 int charsFormats(const char *format, va_list args)
 {
 	int a, b, chars, r_val;
-	chars = 0;
-	fmtsSpefier f_list[] = {{"c", _char}, {"s", _string}, {"%", _percent},
-	{NULL, NULL}
+
+	fmtsSpefier f_list[] = {{"c", _char}, {"s", _string}, {"%", _percent}, {NULL, NULL}
 	};
+	chars = 0;
 	for (a = 0; format[a] != '\0'; a++)
 	{
 		if (format[a] == '%')
@@ -47,7 +48,7 @@ int charsFormats(const char *format, va_list args)
 				{
 					_putchar(format[a]);
 					_putchar(format[a + 1]);
-					chars += 2;
+					chars = chars + 2;
  				}
 				else
 					return (-1);
