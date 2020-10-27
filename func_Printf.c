@@ -1,5 +1,9 @@
-
-
+#include "holberton.h"
+/**
+ * parametros - Parameters for printf
+ * @f_list: list of arguments
+ *
+ */
 
 void parametros(void)
 {
