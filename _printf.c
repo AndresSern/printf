@@ -1,5 +1,6 @@
 #include "holberton.h"
 
+
 /**
  * parametros - Parameters for printf
  * @f_list: list of arguments
@@ -20,46 +21,47 @@ int _printf(const char *format, ...)
 	va_end(list);
 	return chars;
 }
-int charsFormats(const char *format, va_list args)
+int charsFormats(const char *format, va_list valist)
 {
-	int a, b, chars, r_val;
+	int i = 0, j = 0, printedCharacters = 0;
+	fmtsSpefier dataType[] = {{"c", _char}, {"s",_string}};
 
-	fmtsSpefier f_list[] = {{"c", _char}, {"s", _string}, {"%", _percent}, {NULL, NULL}
-	};
-	chars = 0;
-	for (a = 0; format[a] != '\0'; a++)
+	while (format != NULL && format[i] != '\0')
 	{
-		if (format[a] == '%')
+		if (format[i] == '%')
 		{
-			for (b = 0; f_list[b].sym != NULL; b++)
+			if (format[i + 1] == '\0')
+				return (-1);
+			if (format[i + 1] == '%')
 			{
-				if (format[a + 1] == f_list[b].sym[0])
+				printedCharacters += _putchar ('%');
+				i++;
+			}
+			else if (format[i + 1] == ' ')
+			{
+				while (format[i + 1] == ' ')
+					i++;
+				printedCharacters += _putchar('%');
+				printedCharacters += _putchar(' ');
+			}
+			else
+			{
+				for (j = 0; j < 2; j++)
 				{
-					r_val = f_list[b].f(args);
-					if (r_val == -1)
-						return (-1);
-					chars += r_val;
-					break;
+					if (format[i + 1] == dataType[j].sym[0])
+					{
+						printedCharacters += dataType[j].f(valist);
+						i++;
+						break;
+					}
 				}
+				if (j == 2)
+					printedCharacters += _putchar('%');
 			}
-			if (f_list[b].sym == NULL && format[a + 1] != ' ')
-			{
-				if (format[a + 1] != '\0')
-				{
-					_putchar(format[a]);
-					_putchar(format[a + 1]);
-					chars = chars + 2;
- 				}
-				else
-					return (-1);
-			}
-		a += 1;
 		}
 		else
-		{
-			_putchar(format[a]);
-			chars++;
-		}
+			printedCharacters += _putchar (format[i]);
+		i++;
 	}
-	return (chars);
+	return (printedCharacters);
 }
