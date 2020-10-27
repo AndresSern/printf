@@ -3,7 +3,7 @@
 
 void parametros(void)
 {
-	conver_t f_list[] = {
+w	conver_t f_list[] = {
 	{"c", print_char},
 	{"s", print_string},
 	{"%", print_percent},
