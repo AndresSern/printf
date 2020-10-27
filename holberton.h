@@ -8,7 +8,7 @@ typedef struct formats
 {
 	char *sym;
 	int (*f)(va_list);
-}fmtsSpefier;
+} fmtsSpefier;
 
 int _putchar(char c);
 int _printf(const char *format, ...);

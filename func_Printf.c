@@ -22,11 +22,11 @@ int _printf(const char *format, ...)
 int charsFormats(const char *format, va_list args)
 {
 	int a, b, chars, r_val;
-
+	chars = 0;
 	fmtsSpefier f_list[] = {{"c", _char}, {"s", _string}, {"%", _percent},
 	{NULL, NULL}
 	};
-	for (a = 0; format[a]; a++)
+	for (a = 0; format[a] != '\0'; a++)
 	{
 		if (format[a] == '%')
 		{
@@ -56,7 +56,7 @@ int charsFormats(const char *format, va_list args)
 		}
 		else
 		{
-			_putchar(format[a]); /*call the write function*/
+			_putchar(format[a]);
 			chars++;
 		}
 	}

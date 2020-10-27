@@ -1,6 +1,6 @@
 #include "holberton.h"
 /**
- * print_char - print characters
+ * _char - print characters
  * @list: arguments
  * Return: how many characters has been printed
  */
@@ -35,12 +35,6 @@ int _string(va_list list)
  */
 int _percent(__attribute__((unused))va_list list)
 {
-	
 	_putchar('%');
 	return (1);
 }
-/**
- *
- *
- *
- */
