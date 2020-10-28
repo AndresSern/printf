@@ -16,5 +16,6 @@ int charsFormats(const char *format, va_list args);
 int _percent(va_list list);
 int _char(va_list list);
 int _string(va_list list);
+int _integer(va_list list);
 
 #endif
