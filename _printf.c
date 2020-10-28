@@ -34,7 +34,7 @@ int charsFormats(const char *format, va_list args)
 	int a, b, chars, r_val;
 
 	fmtsSpefier f_list[] = {{"c", _char}, {"s", _string},
-				{"%", _percent}, {"d", _integer}, {NULL, NULL}
+				{"%", _percent}, {"d", _integer}, {"i", _integer}, {NULL, NULL}
 	};
 	chars = 0;
 	for (a = 0; format[a] != '\0'; a++)
