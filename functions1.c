@@ -47,7 +47,7 @@ int _percent(__attribute__((unused))va_list list)
 
 int _integer(va_list list)
 {
-	long int num1 = va_arg(list, int), num2;
+	int num1 = va_arg(list, long int), num2;
 	int div = 1, i = 0;
 
 	if (num1 < 0)
