@@ -39,8 +39,11 @@ int _percent(__attribute__((unused))va_list list)
 	return (1);
 }
 
-
-
+/**
+ * _integer - prints integer
+ * @list: va_list variable
+ * Return: prints given number of integers
+ */
 
 int _integer(va_list list)
 {
